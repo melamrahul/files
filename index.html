@@ -1,26 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Categories</title>
+    <title>My Certificates</title>
     <style>
+        /* General styles */
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
             margin: 0;
             padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
         }
         .container {
             max-width: 800px;
             background-color: #fff;
             padding: 20px;
+            display: none;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin: auto;
         }
         .category-select {
             width: 100%;
@@ -47,46 +45,106 @@
         .buttons:hover {
             background-color: #0056b3;
         }
+        .access-denied {
+            display: none;
+            text-align: center;
+            color: #ff0000;
+            margin-top: 20px;
+            font-size: 22px;
+        }
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            .buttons {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1 style="text-align: center; margin-bottom: 20px;">File Categories</h1>
+    <div class="container" id="openclose">
+        <h1 style="text-align: center; margin-bottom: 20px;">My Certificates</h1>
 
         <!-- Category select dropdown -->
         <select id="categorySelect" class="category-select">
             <option value="all">All Categories</option>
-            <option value="admission">Admission</option>
-            <option value="ecet">ECET</option>
-            <option value="rahul">Rahul</option>
-            <option value="other">Other</option>
+            <option value="adhaar">Adhaar Cards</option>
+            <option value="andhra_university">Andhra University</option>
+            <option value="diploma_certificates">Diploma Certificates</option>
+            <option value="ecet">ECET Certificates</option>
         </select>
 
         <!-- Button wrappers for each category -->
-        <div class="button-wrapper admission">
-            <button class="buttons" onclick="openLink('/files/au-application.html')">AU Application</button>
-            <button class="buttons" onclick="openLink('/files/au-study-certificate.html')">AU Study Certificate</button>
+        <div class="button-wrapper adhaar">
+            <button class="buttons" onclick="openLink('/files/mom-adhaar')">Mom Adhaar</button>
+            <button class="buttons" onclick="openLink('/files/dad-adhaar')">Dad Adhaar</button>
+            <button class="buttons" onclick="openLink('/files/prasanth-adhaar')">Prasanth Adhaar</button>
+            <button class="buttons" onclick="openLink('/files/rahul-adhaar')">Rahul Adhaar</button>
+        </div>
+        <div class="button-wrapper andhra_university">
+            <button class="buttons" onclick="openLink('/files/au-application')">AU Application</button>
+            <button class="buttons" onclick="openLink('/files/au-study-certificate')">AU Study Certificate</button>
+        </div>
+        <div class="button-wrapper diploma_certificates">
+            <button class="buttons" onclick="openLink('/files/rahul-od')">Rahul OD</button>
         </div>
         <div class="button-wrapper ecet">
-            <button class="buttons" onclick="openLink('/files/ecet-allotment-order.html')">ECET Allotment Order</button>
-            <button class="buttons" onclick="openLink('/files/ecet-application-form.html')">ECET Application Form</button>
-            <button class="buttons" onclick="openLink('/files/ecet-hallticket.html')">ECET Hall Ticket</button>
-            <button class="buttons" onclick="openLink('/files/ecet-joining-report.html')">ECET Joining Report</button>
-            <button class="buttons" onclick="openLink('/files/ecet-rank-card.html')">ECET Rank Card</button>
-            <button class="buttons" onclick="openLink('/files/ecet-registration.html')">ECET Registration</button>
+            <button class="buttons" onclick="openLink('/files/ecet-allotment-order')">ECET Allotment Order</button>
+            <button class="buttons" onclick="openLink('/files/ecet-application-form')">ECET Application Form</button>
+            <button class="buttons" onclick="openLink('/files/ecet-hallticket')">ECET Hall Ticket</button>
+            <button class="buttons" onclick="openLink('/files/ecet-joining-report')">ECET Joining Report</button>
+            <button class="buttons" onclick="openLink('/files/ecet-rank-card')">ECET Rank Card</button>
+            <button class="buttons" onclick="openLink('/files/ecet-registration')">ECET Registration</button>
         </div>
-        <div class="button-wrapper rahul">
-            <button class="buttons" onclick="openLink('/files/rahul-od.html')">Rahul OD</button>
-        </div>
-        <div class="button-wrapper other">
-            <button class="buttons" onclick="openLink('/files/ration-card.html')">Ration Card</button>
-            <button class="buttons" onclick="openLink('/files/tenth-certificates.html')">10th Certificates</button>
-        </div>
-    </div>
 
+        <!-- Access denied message -->
+        
+    </div>
+      <div id="noPermission" class="access-denied">            You don't have access to this page.
+        </div>
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <!-- Firebase Database -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyDGS4dCnRS7ywHWRBjnaOpDmL28323flw8",
+            authDomain: "melamrahul.firebaseapp.com",
+            databaseURL: "https://melamrahul-default-rtdb.firebaseio.com",
+            projectId: "melamrahul",
+            storageBucket: "melamrahul.appspot.com",
+            messagingSenderId: "721100209859",
+            appId: "1:721100209859:web:52b007dd6becf1d54c6c76",
+            measurementId: "G-8ZH6Z66ESH"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Reference to the database
+        var adminPageRef = firebase.database().ref('AdminDocs');
+
+        // Get elements
+        var opencloseContainer = document.getElementById('openclose');
+        var noPermissionContainer = document.getElementById('noPermission');
+
+        // Check database value
+        adminPageRef.on('value', function(snapshot) {
+            var state = snapshot.val();
+            if (state === 1) {
+                opencloseContainer.style.display = 'block';
+                noPermissionContainer.style.display = 'none';
+            } else {
+                opencloseContainer.style.display = 'none';
+                noPermissionContainer.style.display = 'block';
+            }
+        });
+
+        // Function to open link in the same tab
         function openLink(url) {
-            window.location.href = url; // Redirect to the selected URL in the same tab
+            window.location.href = url;
         }
 
         // Function to filter buttons based on category selection
