@@ -8,22 +8,27 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
+            margin: 0;
             padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
         .container {
             max-width: 800px;
-            margin: 0 auto;
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        .button-wrapper {
-            display: none; /* Initially hide all button wrappers */
-            margin-bottom: 10px;
-        }
         .category-select {
-            margin-bottom: 10px;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
         }
         .buttons {
             display: block;
@@ -46,10 +51,9 @@
 </head>
 <body>
     <div class="container">
-        <h1 style="text-align: center;">File Categories</h1>
+        <h1 style="text-align: center; margin-bottom: 20px;">File Categories</h1>
 
-        <!-- Search box and category select -->
-        <input type="text" id="searchInput" placeholder="Search...">
+        <!-- Category select dropdown -->
         <select id="categorySelect" class="category-select">
             <option value="all">All Categories</option>
             <option value="admission">Admission</option>
@@ -60,65 +64,47 @@
 
         <!-- Button wrappers for each category -->
         <div class="button-wrapper admission">
-            <button class="buttons" onclick="openLink('/au-application.html')">AU Application</button>
-            <button class="buttons" onclick="openLink('/au-study-certificate.html')">AU Study Certificate</button>
+            <button class="buttons" onclick="openLink('/files/au-application.html')">AU Application</button>
+            <button class="buttons" onclick="openLink('/files/au-study-certificate.html')">AU Study Certificate</button>
         </div>
         <div class="button-wrapper ecet">
-            <button class="buttons" onclick="openLink('/ecet-allotment-order.html')">ECET Allotment Order</button>
-            <button class="buttons" onclick="openLink('/ecet-application-form.html')">ECET Application Form</button>
-            <button class="buttons" onclick="openLink('/ecet-hallticket.html')">ECET Hall Ticket</button>
-            <button class="buttons" onclick="openLink('/ecet-joining-report.html')">ECET Joining Report</button>
-            <button class="buttons" onclick="openLink('/ecet-rank-card.html')">ECET Rank Card</button>
-            <button class="buttons" onclick="openLink('/ecet-registration.html')">ECET Registration</button>
+            <button class="buttons" onclick="openLink('/files/ecet-allotment-order.html')">ECET Allotment Order</button>
+            <button class="buttons" onclick="openLink('/files/ecet-application-form.html')">ECET Application Form</button>
+            <button class="buttons" onclick="openLink('/files/ecet-hallticket.html')">ECET Hall Ticket</button>
+            <button class="buttons" onclick="openLink('/files/ecet-joining-report.html')">ECET Joining Report</button>
+            <button class="buttons" onclick="openLink('/files/ecet-rank-card.html')">ECET Rank Card</button>
+            <button class="buttons" onclick="openLink('/files/ecet-registration.html')">ECET Registration</button>
         </div>
         <div class="button-wrapper rahul">
-            <button class="buttons" onclick="openLink('/rahul-od.html')">Rahul OD</button>
+            <button class="buttons" onclick="openLink('/files/rahul-od.html')">Rahul OD</button>
         </div>
         <div class="button-wrapper other">
-            <button class="buttons" onclick="openLink('/ration-card.html')">Ration Card</button>
-            <button class="buttons" onclick="openLink('/tenth-certificates.html')">10th Certificates</button>
+            <button class="buttons" onclick="openLink('/files/ration-card.html')">Ration Card</button>
+            <button class="buttons" onclick="openLink('/files/tenth-certificates.html')">10th Certificates</button>
         </div>
     </div>
 
     <script>
         function openLink(url) {
-            window.open(url, '_blank'); // Open link in a new tab
+            window.location.href = url; // Redirect to the selected URL in the same tab
         }
 
-        // Function to filter buttons based on search and category selection
-        function filterButtons() {
-            var searchValue = document.getElementById('searchInput').value.trim().toLowerCase();
-            var category = document.getElementById('categorySelect').value;
-
+        // Function to filter buttons based on category selection
+        document.getElementById('categorySelect').addEventListener('change', function() {
+            var category = this.value;
             var buttonWrappers = document.querySelectorAll('.button-wrapper');
 
             buttonWrappers.forEach(function(wrapper) {
                 var categoryClass = wrapper.classList[1]; // Assumes the second class is the category
-                var buttons = wrapper.querySelectorAll('.buttons');
 
-                // Show or hide the wrapper based on category and search
+                // Show or hide the wrapper based on category selection
                 if (category === 'all' || category === categoryClass) {
                     wrapper.style.display = 'block'; // Show wrapper
-                    buttons.forEach(function(button) {
-                        var buttonText = button.textContent.trim().toLowerCase();
-                        if (buttonText.indexOf(searchValue) > -1 || searchValue === '') {
-                            button.style.display = 'block'; // Show button
-                        } else {
-                            button.style.display = 'none'; // Hide button
-                        }
-                    });
                 } else {
                     wrapper.style.display = 'none'; // Hide wrapper
                 }
             });
-        }
-
-        // Attach event listeners
-        document.getElementById('searchInput').addEventListener('input', filterButtons);
-        document.getElementById('categorySelect').addEventListener('change', filterButtons);
-
-        // Initial filter call to show all buttons
-        filterButtons();
+        });
     </script>
 </body>
 </html>
