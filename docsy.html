@@ -140,7 +140,7 @@
             display: flex;
             justify-content: space-between;
             width: 100%;
-            padding: 20px;
+            padding: 0px;
             box-sizing: border-box;
             position: absolute;
             bottom: 0;
@@ -201,8 +201,7 @@
     <!-- Overlay container for preview -->
     <div class="overlay" id="overlay">
         <div class="overlay-content">
-         <!-- <button class="close-bn" onclick="closePreview()"><i class="fas fa-times"></i>&ensp;</button>   --> 
-            <iframe id="previewFrame" frameborder="0" scrolling="auto" style="width: 100%; margin-top: 40px; height: 100%; background-color: #fff;"></iframe>
+           <iframe id="previewFrame" frameborder="0" scrolling="auto" style="width: 100%; margin-top: 40px; height: 100%; background-color: #0c1319;"></iframe>
             <div class="button-container" id="butt-container" style="display: flex; justify-content: space-between; width: 100%; padding: 10px 20px;">
                <button class="close-btn" onclick="closePreview()" id="cancel"><i class="fas fa-times"></i>&ensp;Cancel</button>
               <button class="print-button" onclick="printPreview()" id="print"><i class="fas fa-print"></i>&ensp;Print</button>               
@@ -261,7 +260,7 @@
             var overlay = document.getElementById('overlay');
             var previewFrame = document.getElementById('previewFrame');
             previewFrame.src = url;
-            previewFrame.style.height = '64%';
+            previewFrame.style.height = '100%';
             overlay.style.display = 'flex'; // Display the overlay
             previewFrame.onload = function() {
                 previewFrame.style.height = previewFrame.contentWindow.document.body.scrollHeight + 'px';
@@ -289,7 +288,7 @@
             if (previewFrame) {
                 previewFrame.style.height = '100%';
             }
-
+          
             // Trigger the print dialog
             window.print();
 
@@ -320,7 +319,7 @@
 
                 // Reset the preview frame height
                 if (previewFrame) {
-                    previewFrame.style.height = '64%';
+                    previewFrame.style.height = '100%';
                 }
             }, 5000); // Adjust delay time (in milliseconds) as needed
         }
