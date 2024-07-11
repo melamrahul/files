@@ -100,6 +100,19 @@
             cursor: pointer;
             color: #fff;
         }
+       .close-bn {           
+        margin: 0px;
+        margin-left: 85%;           
+          padding: 10px 10px;
+            font-size: 16px;
+        align-items: center;
+         justify-content: center;      
+          border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+        }
+      
 
         .print-button {
             background-color: #4CAF50;
@@ -112,6 +125,10 @@
 
         .close-btn {
             background-color: #ff0000;
+            transition: background-color 0.3s ease;
+        }
+      .close-bn {            
+        background-color: #ff0000;
             transition: background-color 0.3s ease;
         }
 
@@ -180,10 +197,11 @@
     <!-- Overlay container for preview -->
     <div class="overlay" id="overlay">
         <div class="overlay-content">
+          <button class="close-bn" onclick="closePreview()"><i class="fas fa-times"></i>&ensp;</button>           
             <iframe id="previewFrame" frameborder="0" scrolling="auto" style="width: 100%; margin-top: 40px; height: 100%; background-color: #fff;"></iframe>
             <div class="button-container" id="butt-container" style="display: flex; justify-content: space-between; width: 100%; padding: 10px 20px;">
-                <button class="print-button" onclick="printPreview()" id="print"><i class="fas fa-print"></i>&ensp;Print</button>
-                <button class="close-btn" onclick="closePreview()" id="cancel"><i class="fas fa-times"></i>&ensp;Cancel</button>
+               <button class="close-btn" onclick="closePreview()" id="cancel"><i class="fas fa-times"></i>&ensp;Cancel</button>
+              <button class="print-button" onclick="printPreview()" id="print"><i class="fas fa-print"></i>&ensp;Print</button>               
             </div>
         </div>
     </div>  
@@ -273,6 +291,13 @@
 
             // Add elements back after a delay (e.g., 1 second)
             setTimeout(function() {
+                // Recreate the print button                
+              var newPrintBtn = document.createElement('button');
+                newPrintBtn.setAttribute('class', 'print-button');
+                newPrintBtn.setAttribute('id', 'print');
+                newPrintBtn.innerHTML = '<i class="fas fa-print"></i>&ensp;Print';
+                newPrintBtn.onclick = printPreview;
+              
                 // Recreate the cancel button
                 var newCancelBtn = document.createElement('button');
                 newCancelBtn.setAttribute('class', 'close-btn');
@@ -280,16 +305,9 @@
                 newCancelBtn.innerHTML = '<i class="fas fa-times"></i>&ensp;Cancel';
                 newCancelBtn.onclick = closePreview;
 
-                // Recreate the print button
-                var newPrintBtn = document.createElement('button');
-                newPrintBtn.setAttribute('class', 'print-button');
-                newPrintBtn.setAttribute('id', 'print');
-                newPrintBtn.innerHTML = '<i class="fas fa-print"></i>&ensp;Print';
-                newPrintBtn.onclick = printPreview;
-
-                // Add buttons to the button container
-                buttContainer.appendChild(newPrintBtn);
+                // Add buttons to the button container 
                 buttContainer.appendChild(newCancelBtn);
+                buttContainer.appendChild(newPrintBtn);
 
                 // Ensure the button container is in a row position
                 buttContainer.style.display = 'flex';
@@ -300,7 +318,7 @@
                 if (previewFrame) {
                     previewFrame.style.height = '64%';
                 }
-            }, 1000); // Adjust delay time (in milliseconds) as needed
+            }, 5000); // Adjust delay time (in milliseconds) as needed
         }
     </script>
 </body>
