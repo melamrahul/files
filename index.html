@@ -10,6 +10,14 @@
             background-color: #f0f0f0;
             padding: 20px;
         }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
         .button-wrapper {
             display: none; /* Initially hide all button wrappers */
             margin-bottom: 10px;
@@ -17,63 +25,82 @@
         .category-select {
             margin-bottom: 10px;
         }
+        .buttons {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .buttons:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
-    <!-- Search box and category select -->
-    <input type="text" id="searchInput" placeholder="Search...">
-    <select id="categorySelect" class="category-select">
-        <option value="all">All Categories</option>
-        <option value="admission">Admission</option>
-        <option value="ecet">ECET</option>
-        <option value="rahul">Rahul</option>
-        <option value="other">Other</option>
-    </select>
+    <div class="container">
+        <h1 style="text-align: center;">File Categories</h1>
 
-    <!-- Button wrappers for each category -->
-    <div class="button-wrapper admission">
-        <button onclick="openLink('/au-application.html')">AU Application</button>
-        <button onclick="openLink('/au-study-certificate.html')">AU Study Certificate</button>
-    </div>
-    <div class="button-wrapper ecet">
-        <button onclick="openLink('/ecet-allotment-order.html')">ECET Allotment Order</button>
-        <button onclick="openLink('/ecet-application-form.html')">ECET Application Form</button>
-        <button onclick="openLink('/ecet-hallticket.html')">ECET Hall Ticket</button>
-        <button onclick="openLink('/ecet-joining-report.html')">ECET Joining Report</button>
-        <button onclick="openLink('/ecet-rank-card.html')">ECET Rank Card</button>
-        <button onclick="openLink('/ecet-registration.html')">ECET Registration</button>
-    </div>
-    <div class="button-wrapper rahul">
-        <button onclick="openLink('/rahul-od.html')">Rahul OD</button>
-    </div>
-    <div class="button-wrapper other">
-        <button onclick="openLink('/ration-card.html')">Ration Card</button>
-        <button onclick="openLink('/tenth-certificates.html')">10th Certificates</button>
+        <!-- Search box and category select -->
+        <input type="text" id="searchInput" placeholder="Search...">
+        <select id="categorySelect" class="category-select">
+            <option value="all">All Categories</option>
+            <option value="admission">Admission</option>
+            <option value="ecet">ECET</option>
+            <option value="rahul">Rahul</option>
+            <option value="other">Other</option>
+        </select>
+
+        <!-- Button wrappers for each category -->
+        <div class="button-wrapper admission">
+            <button class="buttons" onclick="openLink('/au-application.html')">AU Application</button>
+            <button class="buttons" onclick="openLink('/au-study-certificate.html')">AU Study Certificate</button>
+        </div>
+        <div class="button-wrapper ecet">
+            <button class="buttons" onclick="openLink('/ecet-allotment-order.html')">ECET Allotment Order</button>
+            <button class="buttons" onclick="openLink('/ecet-application-form.html')">ECET Application Form</button>
+            <button class="buttons" onclick="openLink('/ecet-hallticket.html')">ECET Hall Ticket</button>
+            <button class="buttons" onclick="openLink('/ecet-joining-report.html')">ECET Joining Report</button>
+            <button class="buttons" onclick="openLink('/ecet-rank-card.html')">ECET Rank Card</button>
+            <button class="buttons" onclick="openLink('/ecet-registration.html')">ECET Registration</button>
+        </div>
+        <div class="button-wrapper rahul">
+            <button class="buttons" onclick="openLink('/rahul-od.html')">Rahul OD</button>
+        </div>
+        <div class="button-wrapper other">
+            <button class="buttons" onclick="openLink('/ration-card.html')">Ration Card</button>
+            <button class="buttons" onclick="openLink('/tenth-certificates.html')">10th Certificates</button>
+        </div>
     </div>
 
     <script>
         function openLink(url) {
-            // Replace with your logic to open the link
-            console.log('Opening URL:', url);
-            // Example: window.open(url, '_blank'); // Open link in a new tab
+            window.open(url, '_blank'); // Open link in a new tab
         }
 
         // Function to filter buttons based on search and category selection
         function filterButtons() {
-            var searchValue = document.getElementById('searchInput').value.toLowerCase();
+            var searchValue = document.getElementById('searchInput').value.trim().toLowerCase();
             var category = document.getElementById('categorySelect').value;
 
             var buttonWrappers = document.querySelectorAll('.button-wrapper');
 
             buttonWrappers.forEach(function(wrapper) {
                 var categoryClass = wrapper.classList[1]; // Assumes the second class is the category
-                var buttons = wrapper.querySelectorAll('button');
+                var buttons = wrapper.querySelectorAll('.buttons');
 
                 // Show or hide the wrapper based on category and search
                 if (category === 'all' || category === categoryClass) {
                     wrapper.style.display = 'block'; // Show wrapper
                     buttons.forEach(function(button) {
-                        var buttonText = button.textContent.toLowerCase();
+                        var buttonText = button.textContent.trim().toLowerCase();
                         if (buttonText.indexOf(searchValue) > -1 || searchValue === '') {
                             button.style.display = 'block'; // Show button
                         } else {
