@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,12 +11,12 @@
             margin: 0;
             padding: 20px;
             -webkit-tap-highlight-color: transparent;
-      tap-highlight-color: transparent;
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
+            tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
         .container {
             max-width: 800px;
@@ -36,11 +35,15 @@
             border-radius: 4px;
             font-size: 16px;
         }
+        .button-wrapper {
+            display: none;
+        }
         .buttons {
             display: block;
-            width: 100%;
+            width: calc(50% - 10px);
             padding: 12px;
             margin-bottom: 10px;
+            margin-right: 10px;
             text-decoration: none;
             color: #fff;
             background-color: #007bff;
@@ -49,6 +52,9 @@
             text-align: center;
             cursor: pointer;
             transition: background-color 0.3s ease;
+        }
+        .buttons:nth-child(even) {
+            margin-right: 0;
         }
         .buttons:hover {
             background-color: #0056b3;
@@ -60,13 +66,36 @@
             margin-top: 20px;
             font-size: 22px;
         }
+         /* Color variations for categories */    .button-wrapper.10th_certificates .buttons {
+        background-color: #4a2899; /* Purple */
+    }
+    .button-wrapper.andhra_university .buttons {
+        background-color: #7d9b05; /* Green */
+    }
+    .button-wrapper.ap_ecet_rahul .buttons {
+        background-color: #336699; /* Dark Gray */
+    }
+    .button-wrapper.caste_income_dob .buttons {
+        background-color: #ff6f61; /* Coral */
+    }
+    .button-wrapper.diploma_certificates .buttons {
+        background-color: #45b8ac; /* Aqua */
+    }
+    .button-wrapper.family_adhaar .buttons {
+        background-color: #dd4124; /* Red */
+    }
+    .button-wrapper.ration_cards .buttons {
+        background-color: #d65076; /* Pink */
+    }
         /* Responsive design */
         @media (max-width: 768px) {
             .container {
                 padding: 10px;
             }
             .buttons {
+                width: 100%;
                 font-size: 14px;
+                margin-right: 0;
             }
         }
     </style>
@@ -89,7 +118,7 @@
 
         <!-- Button wrappers for each category -->
         <div class="button-wrapper 10th_certificates">
-             <h2>Tenth Cartificates</h2>
+             <h2>10th Certificates</h2>
             <button class="buttons" onclick="openLink('10TH-CERTIFICATES/tenth-certficates.html')">10th Certificates</button>
         </div>
         <div class="button-wrapper andhra_university">
@@ -102,7 +131,7 @@
             <button class="buttons" onclick="openLink('ANDHRA-UNIVERSITY/fee-recipts/year-2-q-2.html')">Year 2 Q2</button>
             <h2>Marks Lists</h2>
             <button class="buttons" onclick="openLink('ANDHRA-UNIVERSITY/marks-lists/AU-2-1-halltkt.html')">AU 2-1 Hall Ticket</button>
-            <button class="buttons" onclick="openLink('fANDHRA-UNIVERSITY/marks-lists/AU-2-1-marks-mem.html')">AU 2-1 Marks Memo</button>
+            <button class="buttons" onclick="openLink('ANDHRA-UNIVERSITY/marks-lists/AU-2-1-marks-mem.html')">AU 2-1 Marks Memo</button>
         </div>
         <div class="button-wrapper ap_ecet_rahul">
             <h2>AP ECET</h2>
@@ -119,7 +148,7 @@
             <button class="buttons" onclick="openLink('CASTE-INCOME-DOB/rahul-dob-cert.html')">Rahul DOB Certificate</button>
             <button class="buttons" onclick="openLink('CASTE-INCOME-DOB/rahul-incom-cert.html')">Rahul Income Certificate</button>
         </div>
-        <div class="button-wrapper diploma_certificates">
+                <div class="button-wrapper diploma_certificates">
             <h2>Diploma Certificates</h2>
             <button class="buttons" onclick="openLink('DIPLOMA-CERTIFICATES/rahul-dip-1-sem-mem.html')">Rahul Diploma 1st Sem Memo</button>
             <button class="buttons" onclick="openLink('DIPLOMA-CERTIFICATES/rahul-dip-3-sem-mem.html')">Rahul Diploma 3rd Sem Memo</button>
@@ -144,9 +173,6 @@
             <button class="buttons" onclick="openLink('RATION-CARDS/fam-ration-one.html')">Family Ration Card One</button>
             <button class="buttons" onclick="openLink('RATION-CARDS/fam-ration-two.html')">Family Ration Card Two</button>
         </div>
-
-        <!-- Access denied message -->
-        
     </div>
     <div id="noPermission" class="access-denied">It is not Authorized for you to access or view this page. Ask <a href="https://api.whatsapp.com/send?phone=+919347450441&text=Hello Rahul, Would you kindly allow me to access your online documents?.." style="color: blue">Rahul</a> to open this page for you. <br><br> <a style="color: green; text-decoration: none; outline-color: none;">This Page is End to End encrypted.</a></div>
 
