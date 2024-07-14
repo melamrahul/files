@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,13 @@
             background-color: #f0f0f0;
             margin: 0;
             padding: 20px;
+            -webkit-tap-highlight-color: transparent; 
+      tap-highlight-color: transparent; 
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
         }
         .container {
             max-width: 800px;
@@ -70,40 +78,72 @@
         <!-- Category select dropdown -->
         <select id="categorySelect" class="category-select">
             <option value="all">All Categories</option>
-            <option value="adhaar">Adhaar Cards</option>
+            <option value="10th_certificates">10th Certificates</option>
             <option value="andhra_university">Andhra University</option>
+            <option value="ap_ecet_rahul">Rahul AP ECET</option>
+            <option value="caste_income_dob">Caste Income DOB</option>
             <option value="diploma_certificates">Diploma Certificates</option>
-            <option value="ecet">ECET Certificates</option>
+            <option value="family_adhaar">Family Adhaar</option>
+            <option value="ration_cards">Ration Cards</option>
         </select>
 
         <!-- Button wrappers for each category -->
-        <div class="button-wrapper adhaar">
-            <button class="buttons" onclick="openLink('/files/mom-adhaar')">Mom Adhaar</button>
-            <button class="buttons" onclick="openLink('/files/dad-adhaar')">Dad Adhaar</button>
-            <button class="buttons" onclick="openLink('/files/prasanth-adhaar')">Prasanth Adhaar</button>
-            <button class="buttons" onclick="openLink('/files/rahul-adhaar')">Rahul Adhaar</button>
+        <div class="button-wrapper 10th_certificates">
+            <button class="buttons" onclick="openLink('files/10TH-CERTIFICATES/tenth-certficates.html')">10th Certificates</button>
         </div>
         <div class="button-wrapper andhra_university">
-            <button class="buttons" onclick="openLink('/files/au-application')">AU Application</button>
-            <button class="buttons" onclick="openLink('/files/au-study-certificate')">AU Study Certificate</button>
+            <h2>Admissions</h2>
+            <button class="buttons" onclick="openLink('files/ANDHRA-UNIVERSITY/applications/au-application.html')">AU Application</button>
+            <button class="buttons" onclick="openLink('files/ANDHRA-UNIVERSITY/applications/au-study-certificate.html')">AU Study Certificate</button>
+            <h2>Fee Receipts</h2>
+            <button class="buttons" onclick="openLink('files/ANDHRA-UNIVERSITY/fee-recipts/AU-fee-recipt-admisson.html')">AU Fee Receipt Admission</button>
+            <button class="buttons" onclick="openLink('files/ANDHRA-UNIVERSITY/fee-recipts/year-2-q-1.html')">Year 2 Q1</button>
+            <button class="buttons" onclick="openLink('files/ANDHRA-UNIVERSITY/fee-recipts/year-2-q-2.html')">Year 2 Q2</button>
+            <h2>Marks Lists</h2>
+            <button class="buttons" onclick="openLink('files/ANDHRA-UNIVERSITY/marks-lists/AU-2-1-halltkt.html')">AU 2-1 Hall Ticket</button>
+            <button class="buttons" onclick="openLink('files/ANDHRA-UNIVERSITY/marks-lists/AU-2-1-marks-mem.html')">AU 2-1 Marks Memo</button>
+        </div>
+        <div class="button-wrapper ap_ecet_rahul">
+            <button class="buttons" onclick="openLink('files/AP-ECET-RAHUL/ecet-allotment-order.html')">ECET Allotment Order</button>
+            <button class="buttons" onclick="openLink('files/AP-ECET-RAHUL/ecet-application-form.html')">ECET Application Form</button>
+            <button class="buttons" onclick="openLink('files/AP-ECET-RAHUL/ecet-hallticket.html')">ECET Hall Ticket</button>
+            <button class="buttons" onclick="openLink('files/AP-ECET-RAHUL/ecet-joining-report.html')">ECET Joining Report</button>
+            <button class="buttons" onclick="openLink('files/AP-ECET-RAHUL/ecet-rank-card.html')">ECET Rank Card</button>
+            <button class="buttons" onclick="openLink('files/AP-ECET-RAHUL/ecet-registration.html')">ECET Registration</button>
+        </div>
+        <div class="button-wrapper caste_income_dob">
+            <button class="buttons" onclick="openLink('files/CASTE-INCOME-DOB/rahul-caste-cert.html')">Rahul Caste Certificate</button>
+            <button class="buttons" onclick="openLink('files/CASTE-INCOME-DOB/rahul-dob-cert.html')">Rahul DOB Certificate</button>
+            <button class="buttons" onclick="openLink('files/CASTE-INCOME-DOB/rahul-incom-cert.html')">Rahul Income Certificate</button>
         </div>
         <div class="button-wrapper diploma_certificates">
-            <button class="buttons" onclick="openLink('/files/rahul-od')">Rahul OD</button>
+            <button class="buttons" onclick="openLink('files/DIPLOMA-CERTIFICATES/rahul-dip-1-sem-mem.html')">Rahul Diploma 1st Sem Memo</button>
+            <button class="buttons" onclick="openLink('files/DIPLOMA-CERTIFICATES/rahul-dip-3-sem-mem.html')">Rahul Diploma 3rd Sem Memo</button>
+            <button class="buttons" onclick="openLink('files/DIPLOMA-CERTIFICATES/rahul-dip-4-sem-mem.html')">Rahul Diploma 4th Sem Memo</button>
+            <button class="buttons" onclick="openLink('files/DIPLOMA-CERTIFICATES/rahul-dip-6-sem-mem.html')">Rahul Diploma 6th Sem Memo</button>
+            <button class="buttons" onclick="openLink('files/DIPLOMA-CERTIFICATES/rahul-dip-tc.html')">Rahul TC</button>
+            <button class="buttons" onclick="openLink('files/DIPLOMA-CERTIFICATES/rahul-od.html')">Rahul OD</button>
+            <button class="buttons" onclick="openLink('files/DIPLOMA-CERTIFICATES/rahul-poly-halltkt.html')">Rahul Polytechnic Hall Ticket</button>
+            <button class="buttons" onclick="openLink('files/DIPLOMA-CERTIFICATES/rahul-poly-jn-report.html')">Rahul Polytechnic Joining Report</button>
+            <button class="buttons" onclick="openLink('files/DIPLOMA-CERTIFICATES/rahul-poly-rank-card.html')">Rahul Polytechnic Rank Card</button>
+            <button class="buttons" onclick="openLink('files/DIPLOMA-CERTIFICATES/rahul-polycet-allot-order.html')">Rahul Polycet Allotment Order</button>
         </div>
-        <div class="button-wrapper ecet">
-            <button class="buttons" onclick="openLink('/files/ecet-allotment-order')">ECET Allotment Order</button>
-            <button class="buttons" onclick="openLink('/files/ecet-application-form')">ECET Application Form</button>
-            <button class="buttons" onclick="openLink('/files/ecet-hallticket')">ECET Hall Ticket</button>
-            <button class="buttons" onclick="openLink('/files/ecet-joining-report')">ECET Joining Report</button>
-            <button class="buttons" onclick="openLink('/files/ecet-rank-card')">ECET Rank Card</button>
-            <button class="buttons" onclick="openLink('/files/ecet-registration')">ECET Registration</button>
+        <div class="button-wrapper family_adhaar">
+            <button class="buttons" onclick="openLink('files/FAMILY-ADHAAR/dad-adhaar.html')">Dad Adhaar</button>
+            <button class="buttons" onclick="openLink('files/FAMILY-ADHAAR/mom-adhaar.html')">Mom Adhaar</button>
+            <button class="buttons" onclick="openLink('files/FAMILY-ADHAAR/prasanth-adhaar.html')">Prasanth Adhaar</button>
+            <button class="buttons" onclick="openLink('files/FAMILY-ADHAAR/rahul-adhaar.html')">Rahul Adhaar</button>
+        </div>
+        <div class="button-wrapper ration_cards">
+            <button class="buttons" onclick="openLink('files/RATION-CARDS/fam-ration-one.html')">Family Ration Card One</button>
+            <button class="buttons" onclick="openLink('files/RATION-CARDS/fam-ration-two.html')">Family Ration Card Two</button>
         </div>
 
         <!-- Access denied message -->
         
     </div>
-      <div id="noPermission" class="access-denied">            You don't have access to this page.
-        </div>
+    <div id="noPermission" class="access-denied">You don't have access to this page.</div>
+
     <!-- Firebase App (the core Firebase SDK) -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <!-- Firebase Database -->
@@ -164,5 +204,32 @@
             });
         });
     </script>
+<script src="https://cdn.jsdelivr.net/npm/disable-devtool"></script>
+    <script>
+        DisableDevtool({
+            ondevtoolopen: (type) => {
+                window.location.href = "https://www.google.com/";
+            },
+        });
+    </script>
+<script>
+    // Disable right-click context menu
+    document.oncontextmenu = function() {
+        return false;
+    };
+
+    // Disable certain key combinations
+    document.onkeydown = function(e) {
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+            return false;
+        }
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+            return false;
+        }
+        if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+            return false;
+        }
+    };
+</script>
 </body>
 </html>
