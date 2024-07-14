@@ -93,9 +93,24 @@
                 padding: 10px;
             }
             .buttons {
-                width: 100%;
                 font-size: 14px;
-                margin-right: 0;
+            }
+        }
+        /* Desktop layout */
+        @media (min-width: 769px) {
+            .button-wrapper {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .buttons {
+                flex: 1 1 calc(50% - 10px); /* Two buttons per row */
+            }
+        }
+        /* Mobile layout */
+        @media (max-width: 768px) {
+            .buttons {
+                width: 100%; /* One button per row */
             }
         }
     </style>
